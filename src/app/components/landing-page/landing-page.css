@@ -1,0 +1,32 @@
+.navbar {
+    background-color: rgb(191, 226, 191);
+}
+
+/* Hero section con imagen de fondo */
+.hero {
+    background: url('../../../assets/images/lp-bg.jpg') no-repeat center center/cover;
+    min-height: 80vh;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Cards */
+.card {
+    border-radius: 15px;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+}
