@@ -1,0 +1,42 @@
+<div class="login-body">
+    <div class="auth-card">
+        <!-- Encabezado -->
+        <div class="auth-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/2909/2909763.png" alt="Logo EcoMarket">
+
+            <h3>EcoMarket</h3>
+        </div>
+
+        <!-- Formulario Login -->
+        <div class="p-3" id="login-form">
+           <form class="d-flex justify-content-center flex-column px-5">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre completo">
+                </div>
+                <div class="mb-3">
+                    <label for="email-register" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email-register"
+                        placeholder="Ingrese su correo electrónico">
+                </div>
+                <div class="mb-3">
+                    <label for="password-register" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password-register"
+                        placeholder="Ingrese su contraseña">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="confirm-password"
+                        placeholder="Ingrese su contraseña nuevamente">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-login text-white">Registrarse</button>
+                </div>
+            </form>
+
+            <div class="extra-links d-flex justify-content-center">
+                <button class="btn btn-link mt-3" routerLink="/login">Ya tengo una cuenta</button>
+            </div>
+        </div>
+    </div>
+</div>
