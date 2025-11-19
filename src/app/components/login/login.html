@@ -9,23 +9,33 @@
 
         <!-- Formulario Login -->
         <div class="p-3" id="login-form">
+            <h2 class="my-3 text-center">Iniciar Sesión</h2>
             <form class="d-flex justify-content-center flex-column px-5">
                 <div class="mb-3">
-                    <label for="email-login" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email-login"
-                        placeholder="Ingrese su correo electrónico">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico"
+                        [(ngModel)]="email" name="email">
                 </div>
                 <div class="mb-3">
-                    <label for="password-login" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password-login" placeholder="Ingrese su contraseña">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="password-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                            placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password">
+                        <button type="button" class="btn btn-sm btn-outline-secondary toggle-password"
+                            (click)="togglePassword()" >
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-login text-white" routerLink="/catalogo" style="min-width: 200px;">Ingresar</button>
+                    <button type="submit" class="btn btn-login text-white" (click)="login()"
+                        style="min-width: 200px;">Ingresar</button>
                 </div>
             </form>
 
             <div class="extra-links d-flex justify-content-center">
                 <button class="btn btn-link mt-3" routerLink="/register">Crear una cuenta nueva</button>
+                <button class="btn btn-link mt-3" routerLink="/forgot-password">Olvidé mi contraseña</button>
             </div>
         </div>
     </div>

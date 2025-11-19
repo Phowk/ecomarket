@@ -9,28 +9,41 @@
 
         <!-- Formulario Login -->
         <div class="p-3" id="login-form">
-           <form class="d-flex justify-content-center flex-column px-5">
+            <h2 class="my-3 text-center">Crear cuenta</h2>
+            <form class="d-flex justify-content-center flex-column px-5">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ingrese su nombre completo">
+                    <label for="fullName" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="fullName" name="fullName"
+                        placeholder="Ingrese su nombre completo" [(ngModel)]="fullName">
                 </div>
                 <div class="mb-3">
-                    <label for="email-register" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email-register"
-                        placeholder="Ingrese su correo electrónico">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico" [(ngModel)]="email" name="email">
                 </div>
                 <div class="mb-3">
-                    <label for="password-register" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password-register"
-                        placeholder="Ingrese su contraseña">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="password-wrapper">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                            placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password">
+                        <button type="button" class="btn btn-sm btn-outline-secondary toggle-password"
+                            (click)="togglePassword()">
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="confirm-password" class="form-label">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="confirm-password"
-                        placeholder="Ingrese su contraseña nuevamente">
+                    <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
+                    <div class="password-wrapper">
+                        <input [type]="showConfPassword ? 'text' : 'password'" class="form-control" id="confirm-password"
+                            placeholder="Confirme su contraseña" [(ngModel)]="confirmPassword" name="confirm-password">
+                        <button type="button" class="btn btn-sm btn-outline-secondary toggle-password"
+                            (click)="toggleConfPassword()">
+                            <i class="bi" [ngClass]="showConfPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-login text-white">Registrarse</button>
+                    <button type="submit" class="btn btn-login text-white" (click)="register()">Registrarse</button>
                 </div>
             </form>
 

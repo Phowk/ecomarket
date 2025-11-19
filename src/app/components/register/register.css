@@ -75,3 +75,52 @@
 .btn-secondary-custom:hover {
     background: #155e5a;
 }
+
+.password-wrapper {
+    position: relative; /* necesario para posicionar el botón dentro del input */
+}
+
+/* input: más espacio a la derecha para el icono */
+.password-wrapper .form-control {
+    padding-right: 3.8rem; /* aumenta si el icono se superpone */
+    box-sizing: border-box;
+}
+
+/* botón icono: tamaño fijo, centrado verticalmente */
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 0.45rem;              /* separación desde el borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    height: calc(1.6em + 0.6rem); /* intenta igualar la altura visual del input */
+    min-height: 30px;
+    width: 36px;                 /* ancho fijo para centrar el icono */
+    padding: 0;                  /* elimina padding de btn-sm que desalineaba */
+    border: none;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+/* focus / accesibilidad */
+.password-wrapper .toggle-password:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+.toggle-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  padding: 0;
+  
+}
+
+.toggle-password:hover {
+  color: green;
+}

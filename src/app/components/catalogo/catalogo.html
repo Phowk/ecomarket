@@ -1,9 +1,14 @@
 <div class="container-fluid py-4">
     <div class="row">
+        <div class="d-md-none d-flex justify-content-center mb-3">
+        <button class="btn btn-outline-primary inline-block d-md-none mb-3" data-bs-toggle="collapse"
+            data-bs-target="#mobileFilters">
+            Mostrar filtros
+        </button>
+        </div>
 
-        <!-- Filtros -->
-        <aside class="col-12 col-md-3 col-lg-2 mb-4 position-sticky" style="top: 1rem;">
-            <div class="p-3 bg-white rounded shadow-sm">
+        <div id="mobileFilters" class="collapse d-md-none">
+            <div class="p-3 bg-white rounded shadow-sm mb-3">
                 <h5 class="mb-3">Filtros</h5>
 
                 <div class="mb-3">
@@ -15,6 +20,41 @@
                         <option>Lácteos</option>
                     </select>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ubicación</label>
+                    <select class="form-select">
+                        <option>Todas</option>
+                        <option>Cundinamarca</option>
+                        <option>Tolima</option>
+                        <option>Eje Cafetero</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Precio máx</label>
+                    <input type="number" class="form-control" placeholder="50000">
+                </div>
+
+                <button class="btn btn-primary w-100">Aplicar</button>
+            </div>
+        </div>
+        
+        <aside class="col-12 col-md-3 col-lg-2 mb-4 position-sticky d-none d-md-block" style="top: 1rem;">
+            <div class="p-3 bg-white rounded shadow-sm">
+                <h5 class="mb-3">Filtros</h5>
+        <!-- <button (click)="cargarProductos()">Cargar productos a Firestore</button> -->
+
+                <div class="mb-3">
+                    <label class="form-label">Categoría</label>
+                    <select class="form-select">
+                        <option>Todas</option>
+                        <option>Frutas</option>
+                        <option>Verduras</option>
+                        <option>Lácteos</option>
+                    </select>
+                </div>
+
                 <div class="mb-3">
                     <label class="form-label">Ubicación</label>
                     <select class="form-select">
@@ -33,14 +73,14 @@
                 <button class="btn btn-primary w-100">Aplicar</button>
             </div>
         </aside>
-
+        
         <!-- Productos -->
         <main class="col-12 col-md-9 col-lg-10">
             <h3 class="text-center">Catálogo</h3>
             <hr>
-            <div class="row g-4">
+            <!-- <div class="row g-4">
 
-                <!-- Tarjeta de producto -->
+                <!-- Tarjeta de producto
                 <div class="col-6 col-lg-4 col-xl-3">
                     <div class="card h-100 shadow-sm">
                         <img src="" class="card-img-top" alt="producto">
@@ -48,13 +88,39 @@
                             <h6 class="card-title">Producto X</h6>
                             <p class="card-text text-muted">$39.900</p>
                             <button class="btn btn-outline-primary btn-sm w-100">Ver más</button>
-                            
+
                         </div>
                     </div>
                 </div>
+            </div> -->
 
+            <div class="row g-4">
+  @for (producto of productos; track producto.id) {
+    <div class="col-6 col-lg-4 col-xl-3">
+      <div class="card h-100 shadow-sm">
 
-            </div>
+        <img 
+          [src]="producto.imagenUrl || 'assets/no-image.png'"
+          class="card-img-top"
+          [alt]="producto.nombre"
+        >
+
+        <div class="card-body">
+          <h6 class="card-title">{{ producto.nombre }}</h6>
+
+          <p class="card-text text-muted">
+            {{ producto.precio | currency:'COP':'symbol-narrow' }}
+          </p>
+
+          <button class="btn btn-outline-primary btn-sm w-100">
+            Ver más
+          </button>
+        </div>
+
+      </div>
+    </div>
+  }
+</div>
         </main>
 
     </div>

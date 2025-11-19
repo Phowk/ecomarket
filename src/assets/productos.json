@@ -1,0 +1,182 @@
+[
+  {
+    "nombre": "Tomates orgánicos",
+    "descripcion": "Tomates frescos de cultivo sostenible.",
+    "precio": 3500,
+    "imagenUrl": "https://static.vecteezy.com/system/resources/thumbnails/057/716/969/small/assortment-of-fresh-organic-tomatoes-and-lettuce-leaves-on-wooden-table-png.png",
+    "categoria": "Vegetales",
+    "disponible": true,
+    "productor": "Finca La Esperanza"
+  },
+  {
+    "nombre": "Lechuga orgánica",
+    "descripcion": "Lechuga crujiente sin pesticidas.",
+    "precio": 2500,
+    "imagenUrl": "https://fromnativo.com/wp-content/uploads/2020/07/lechuga-fresca_1339-2067.jpg",
+    "categoria": "Vegetales",
+    "disponible": true,
+    "productor": "Finca La Esperanza"
+  },
+  {
+    "nombre": "Miel pura artesanal",
+    "descripcion": "Miel sin procesar de abejas nativas.",
+    "precio": 15000,
+    "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcpVqiswvY3fTDL93KNvzYkFnVg5oT4-dRw&s",
+    "categoria": "Endulzantes",
+    "disponible": true,
+    "productor": "Apiarios Don Mario"
+  },
+  {
+    "nombre": "Huevos camperos",
+    "descripcion": "Huevos de gallinas libres.",
+    "precio": 12000,
+    "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPx61k_WG77QJv2u-3vEtSH_8gTa11IQOvjA&s",
+    "categoria": "Proteínas",
+    "disponible": true,
+    "productor": "Granja Santa Rosa"
+  },
+  {
+    "nombre": "Café orgánico molido",
+    "descripcion": "Café de altura producido sin químicos.",
+    "precio": 18000,
+    "imagenUrl": "https://www.cerowasteshop.com/cdn/shop/files/Cafe-Molido-Saludable-Zero-Waste-A-Granel.jpg?v=1686603372",
+    "categoria": "Bebidas",
+    "disponible": true,
+    "productor": "Café El Mirador"
+  },
+  {
+    "nombre": "Yogurt artesanal natural",
+    "descripcion": "Yogur hecho con leche de vacas locales.",
+    "precio": 6000,
+    "imagenUrl": "https://sembrandoconfianza.com/wp-content/uploads/2022/04/Fotos-para-producto-2-scaled.webp",
+    "categoria": "Lácteos",
+    "disponible": true,
+    "productor": "Lácteos La Colina"
+  },
+  {
+    "nombre": "Queso campesino",
+    "descripcion": "Queso fresco elaborado artesanalmente.",
+    "precio": 9000,
+    "imagenUrl": "https://storage.googleapis.com/mysinventarios-imagenes/MYS_20182504082523.jpeg",
+    "categoria": "Lácteos",
+    "disponible": true,
+    "productor": "Lácteos La Colina"
+  },
+  {
+    "nombre": "Pan integral artesanal",
+    "descripcion": "Pan hecho con harinas orgánicas.",
+    "precio": 4000,
+    "imagenUrl": "https://i.ytimg.com/vi/JyfZNeU6jYc/maxresdefault.jpg",
+    "categoria": "Panadería",
+    "disponible": true,
+    "productor": "Horno Verde"
+  },
+  {
+    "nombre": "Aguacate Hass",
+    "descripcion": "Aguacates maduros y cremosos.",
+    "precio": 5000,
+    "imagenUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Avocado_Hass_-_single_and_halved.jpg/1200px-Avocado_Hass_-_single_and_halved.jpg",
+    "categoria": "Frutas",
+    "disponible": true,
+    "productor": "Finca Los Cedros"
+  },
+  {
+    "nombre": "Banano orgánico",
+    "descripcion": "Bananos dulces de cultivo natural.",
+    "precio": 3000,
+    "imagenUrl": "https://fromnativo.com/wp-content/uploads/2020/07/banano-criollo.jpg",
+    "categoria": "Frutas",
+    "disponible": true,
+    "productor": "Finca Los Cedros"
+  },
+  {
+    "nombre": "Zanahorias frescas",
+    "descripcion": "Zanahorias cosechadas el mismo día.",
+    "precio": 2500,
+    "imagenUrl": "https://d31f1ehqijlcua.cloudfront.net/n/9/f/8/5/9f85ef0a3c857f2c122500455c4802c513cc46ed_Vegetables_177577_01.jpg",
+    "categoria": "Vegetales",
+    "disponible": true,
+    "productor": "Huerta El Sol"
+  },
+  {
+    "nombre": "Lentejas orgánicas",
+    "descripcion": "Lentejas sin conservantes.",
+    "precio": 7000,
+    "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkSRpSSY_DbVijB0r33fQ-tjf8NpmCjUq93w&s",
+    "categoria": "Granos",
+    "disponible": true,
+    "productor": "Granos del Sur"
+  },
+  {
+    "nombre": "Fríjol cargamanto",
+    "descripcion": "Fríjol tradicional de cultivo local.",
+    "precio": 8500,
+    "imagenUrl": "https://colombiasisabe.com/wp-content/uploads/2022/12/frijol-cargamanto-rojo.jpg",
+    "categoria": "Granos",
+    "disponible": true,
+    "productor": "Granos del Sur"
+  },
+  {
+    "nombre": "Papa criolla",
+    "descripcion": "Papa amarilla muy usada en sopas.",
+    "precio": 4500,
+    "imagenUrl": "https://storage.googleapis.com/plazaprecioscom/corabastos/PAPA%20CRIOLLA%20LAVADA.jpg",
+    "categoria": "Vegetales",
+    "disponible": true,
+    "productor": "Huerta El Sol"
+  },
+  {
+    "nombre": "Cebolla larga",
+    "descripcion": "Cebolla fresca recién cosechada.",
+    "precio": 2000,
+    "imagenUrl": "https://exitocol.vtexassets.com/arquivos/ids/30606467/Cebolla-Junca-X-500g-894372_a.jpg?v=638924360517300000",
+    "categoria": "Vegetales",
+    "disponible": true,
+    "productor": "Huerta El Sol"
+  },
+  {
+    "nombre": "Manzana roja",
+    "descripcion": "Manzanas dulces de origen local.",
+    "precio": 6000,
+    "imagenUrl": "https://www.recetasnestle.com.co/sites/default/files/inline-images/tipos-de-manzana-royal-gala_0.jpg",
+    "categoria": "Frutas",
+    "disponible": true,
+    "productor": "Finca Los Pinos"
+  },
+  {
+    "nombre": "Pera criolla nacional",
+    "descripcion": "Peras jugosas cultivadas sin químicos.",
+    "precio": 6500,
+    "imagenUrl": "https://organicosysaludables.com/wp-content/uploads/2017/06/Pera-criolla-bosc-organica.jpg",
+    "categoria": "Frutas",
+    "disponible": true,
+    "productor": "Finca Los Pinos"
+  },
+  {
+    "nombre": "Harina de maíz orgánica",
+    "descripcion": "Harina molida tradicionalmente.",
+    "precio": 4500,
+    "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeu2w2thw95nBSkkXxiMU1DihkmA-qlgrniA&s",
+    "categoria": "Granos",
+    "disponible": true,
+    "productor": "Granos del Sur"
+  },
+  {
+    "nombre": "Cúrcuma fresca",
+    "descripcion": "Raíz de cúrcuma perfecta para infusiones.",
+    "precio": 3000,
+    "imagenUrl": "https://http2.mlstatic.com/D_NQ_NP_975979-MCO47852725022_102021-O.webp",
+    "categoria": "Especias",
+    "disponible": true,
+    "productor": "Finca La Esperanza"
+  },
+  {
+    "nombre": "Jengibre fresco",
+    "descripcion": "Jengibre aromático ideal para bebidas.",
+    "precio": 3500,
+    "imagenUrl": "https://exitocol.vtexassets.com/arquivos/ids/27274862/Jengibre-A-Granel-X-120gr-1257_a.jpg?v=638802460533600000",
+    "categoria": "Especias",
+    "disponible": true,
+    "productor": "Finca La Esperanza"
+  }
+]
