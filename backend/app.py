@@ -16,7 +16,6 @@ def protected():
     id_token = request.headers.get("Authorization")
     if not id_token:
         return jsonify({"error": "No token provided"}), 401
-
     try:
         decoded_token = auth.verify_id_token(id_token)
         uid = decoded_token["uid"]
