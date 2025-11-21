@@ -14,7 +14,7 @@ app.config["JWT_SECRET_KEY"] = "clave_super_secreta_escuela"
 jwt = JWTManager(app)
 
 # Registrar blueprints
-app.register_blueprint(auth_bp)
+app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(productos_bp, url_prefix="/api/productos")
 
 @app.route("/")

@@ -22,7 +22,7 @@
                         <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
                             placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password">
                         <button type="button" class="btn btn-sm btn-outline-secondary toggle-password"
-                            (click)="togglePassword()" >
+                            (click)="togglePassword()">
                             <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
                         </button>
                     </div>
@@ -31,6 +31,12 @@
                     <button type="submit" class="btn btn-login text-white" (click)="login()"
                         style="min-width: 200px;">Ingresar</button>
                 </div>
+                @if (errorMsg()) {
+                <div class="alert alert-danger mt-2">
+                    {{ errorMsg() }}
+                </div>
+                }
+
             </form>
 
             <div class="extra-links d-flex justify-content-center">

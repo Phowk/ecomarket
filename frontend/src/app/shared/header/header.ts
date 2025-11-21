@@ -12,40 +12,38 @@ import { AuthService } from '../../services/auth';
   styleUrl: './header.css'
 })
 export class Header implements OnInit {
-
-  isCollapsed = false;
-
-  // Signals para UI reactiva
-  loggedIn = signal(false);
+  isCollapsed: boolean = false;
+  isLoggedIn: boolean = false;
+  fullName: string | null = null;
   userRole = signal<string | null>(null);
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
-
+    this.authService.loggedIn$.subscribe(logged => {
+      this.isLoggedIn = logged;
+      if (logged) {
+      this.fullName = this.authService.getFullName();
+  }
+    });
     if (typeof window !== 'undefined' && 'ResizeObserver' in window) {
       const observer = new ResizeObserver(() => {
         const width = window.innerWidth;
-        this.isCollapsed = width < 768; 
+        this.isCollapsed = width < 768;
       });
 
       observer.observe(document.body);
     }
 
-    this.refreshAuthState();
   }
 
   switchCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  private refreshAuthState() {
-    this.loggedIn.set(this.authService.isLoggedIn());
-    this.userRole.set(this.authService.getRole());
-  }
 
   userEmail(): string {
     // El email viene dentro del token JWT decodificado
@@ -57,7 +55,8 @@ export class Header implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.refreshAuthState();
+    this.isLoggedIn = false;
+    this.fullName = null;
     this.router.navigate(['/login']);
   }
 }

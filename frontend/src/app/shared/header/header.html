@@ -12,38 +12,37 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" routerLink="/home">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/catalogo">Cátalogo</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link" href="/integrantes">Nosotros</a></li>
                 @if (isCollapsed === false) {
                 <div class="border-start ms-3 border-dark mx-3"></div>
-                
-                    <div class="border-top border-dark my-3 border-1 border-opacity-25"></div>
+
+                <div class="border-top border-dark my-3 border-1 border-opacity-25"></div>
                 }
                 @else {
                 }
                 <div class="d-flex align-items-center">
-                    @if (loggedIn()) {
-    <li class="nav-item">
-        <span>Hola, {{ userEmail() }}</span>
-    </li>
+                    @if (isLoggedIn) {
+                    <li class="nav-item">
+                        <span>Hola, {{ authService.getFullName() || 'Usuario' }}</span>
+                    </li>
 
-    <li class="nav-item">
-        <button class="btn btn-outline-danger ms-2" (click)="logout()">
-            Cerrar sesión
-        </button>
-    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-danger ms-2" (click)="logout()">
+                            Cerrar sesión<i class="bi bi-box-arrow-right ms-2"></i>
+                        </button>
+                    </li>
 
-} @else {
+                    } @else {
 
-    <li class="nav-item">
-        <button class="btn btn-primary" routerLink="/login">
-            Iniciar Sesión
-        </button>
-    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-primary" routerLink="/login">
+                            Iniciar Sesión
+                        </button>
+                    </li>
 
-}
+                    }
 
-                </div> 
+                </div>
             </ul>
         </div>
     </div>

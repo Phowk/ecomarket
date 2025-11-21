@@ -1,6 +1,6 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
-import { AuthService} from '../../services/auth';
+import { AuthService } from '../../services/auth';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class Login {
   email: string = '';
   password: string = '';
   showPassword: boolean = false;
+  
 
   private auth = inject(AuthService);
   private router = inject(Router);
@@ -35,13 +36,16 @@ export class Login {
     }
 
     this.loading.set(true);
-    this.errorMsg.set('');
 
     this.auth.login(this.email, this.password).subscribe({
-      next: () => {
-        this.loading.set(false);
-        window.location.href = '/catalogo';
-        this.router.navigate(['/catalogo']);
+      next: (success) => {
+        if (success) {
+          setTimeout(() => {
+            this.router.navigate(['/catalogo']);
+            console.log('Login exitoso');
+          });
+        }
+
       },
       error: (error) => {
         this.loading.set(false);
@@ -49,5 +53,5 @@ export class Login {
       }
     });
   }
-  
+
 }

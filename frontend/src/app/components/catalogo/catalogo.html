@@ -8,59 +8,12 @@
         </div>
 
         <div id="mobileFilters" class="collapse d-md-none">
-            <div class="p-3 bg-white rounded shadow-sm mb-3">
+            <div class="p-3 bg-white rounded shadow mb-3">
                 <h5 class="mb-3">Filtros</h5>
 
                 <div class="mb-3">
                     <label class="form-label">Categoría</label>
-                    <select class="form-select">
-                        <option>Todas</option>
-                        <option>Vegetales</option>
-                        <option>Frutas</option>
-                        <option>Granos</option>
-                        <option>Especias</option>
-                        <option>Lácteos</option>
-                        <option>Endulzantes</option>
-                        <option>Bebidas</option>
-                        <option>Panadería</option>
-                        <option>Proteínas</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Ubicación</label>
-                    <select class="form-select">
-                        <option>Todas</option>
-                        <option>Finca La Esperanza</option>
-                        <option>Apiarios Don Mario</option>
-                        <option>Granja Santa Rosa</option>
-                        <option>Café El Mirador</option>
-                        <option>Lácteos La Colina</option>
-                        <option>Horno Verde</option>
-                        <option>Finca Los Cedros</option>
-                        <option>Huerta El Sol</option>
-                        <option>Granos del Sur</option>
-                        <option>Finca Los Pinos</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Precio máx</label>
-                    <input type="number" class="form-control" placeholder="50000">
-                </div>
-
-                <button class="btn btn-primary w-100">Aplicar</button>
-            </div>
-        </div>
-
-        <aside class="col-12 col-md-3 col-lg-2 mb-4 position-sticky d-none d-md-block" style="top: 1rem;">
-            <div class="p-3 bg-white rounded shadow-sm">
-                <h5 class="mb-3">Filtros</h5>
-                <!-- <button (click)="cargarProductos()">Cargar productos a Firestore</button> -->
-
-                <div class="mb-3">
-                    <label class="form-label">Categoría</label>
-                    <select class="form-select">
+                    <select class="form-select" [(ngModel)]="categoriaFiltro" name="categoriaFiltro">
                         <option>Todas</option>
                         <option>Vegetales</option>
                         <option>Frutas</option>
@@ -76,7 +29,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Productor</label>
-                    <select class="form-select">
+                    <select class="form-select" [(ngModel)]="productorFiltro" name="productorFiltro">
                         <option>Todas</option>
                         <option>Finca La Esperanza</option>
                         <option>Apiarios Don Mario</option>
@@ -92,11 +45,54 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Precio máx</label>
-                    <input type="number" class="form-control" placeholder="50000">
+                    <label class="form-label">Precio máximo</label>
+                    <input type="number" class="form-control" placeholder="50000" [(ngModel)]="precioMaxFiltro" name="precioMaxFiltro">
+                </div>
+            </div>
+        </div>
+
+        <aside class="col-12 col-md-3 col-lg-2 mb-4 position-sticky d-none d-md-block" style="top: 1rem;">
+            <div class="p-3 bg-white rounded shadow">
+                <h5 class="mb-3">Filtros</h5>
+                <!-- <button (click)="cargarProductos()">Cargar productos a Firestore</button> -->
+
+                <div class="mb-3">
+                    <label class="form-label">Categoría</label>
+                    <select class="form-select" [(ngModel)]="categoriaFiltro" name="categoriaFiltro">
+                        <option>Todas</option>
+                        <option>Vegetales</option>
+                        <option>Frutas</option>
+                        <option>Granos</option>
+                        <option>Especias</option>
+                        <option>Lácteos</option>
+                        <option>Endulzantes</option>
+                        <option>Bebidas</option>
+                        <option>Panadería</option>
+                        <option>Proteínas</option>
+                    </select>
                 </div>
 
-                <button class="btn btn-primary w-100">Aplicar</button>
+                <div class="mb-3">
+                    <label class="form-label">Productor</label>
+                    <select class="form-select" [(ngModel)]="productorFiltro" name="productorFiltro">
+                        <option>Todas</option>
+                        <option>Finca La Esperanza</option>
+                        <option>Apiarios Don Mario</option>
+                        <option>Granja Santa Rosa</option>
+                        <option>Café El Mirador</option>
+                        <option>Lácteos La Colina</option>
+                        <option>Horno Verde</option>
+                        <option>Finca Los Cedros</option>
+                        <option>Huerta El Sol</option>
+                        <option>Granos del Sur</option>
+                        <option>Finca Los Pinos</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Precio máximo</label>
+                    <input type="number" class="form-control" placeholder="50000" [(ngModel)]="precioMaxFiltro" name="precioMaxFiltro">
+                </div>
             </div>
         </aside>
 
@@ -104,28 +100,12 @@
         <main class="col-12 col-md-9 col-lg-10">
             <h3 class="text-center">Catálogo</h3>
             <hr>
-            <!-- <div class="row g-4">
-
-                <!-- Tarjeta de producto
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 shadow-sm">
-                        <img src="" class="card-img-top" alt="producto">
-                        <div class="card-body">
-                            <h6 class="card-title">Producto X</h6>
-                            <p class="card-text text-muted">$39.900</p>
-                            <button class="btn btn-outline-primary btn-sm w-100">Ver más</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
             <div class="row g-4">
 
                 <!-- Tarjetas generadas dinámicamente -->
-                @for (producto of productos; track producto.id) {
+                @for (producto of productosFiltrados; track producto.id) {
                 <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 shadow">
 
                         <img [src]="producto.imagenUrl || 'assets/no-image.png'" class="card-img-top"
                             [alt]="producto.nombre">

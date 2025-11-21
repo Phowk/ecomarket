@@ -5,3 +5,7 @@
 .ecomarkettext {
     color: #2db3ac;
 }
+
+.nav-link :active {
+    text-decoration: underline;
+}

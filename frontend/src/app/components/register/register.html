@@ -35,7 +35,7 @@
                     <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
                     <div class="password-wrapper">
                         <input [type]="showConfPassword ? 'text' : 'password'" class="form-control" id="confirm-password"
-                            placeholder="Confirme su contraseña" [(ngModel)]="confirmPassword" name="confirm-password">
+                            placeholder="Confirme su contraseña" [(ngModel)]="confirmPassword" name="confirmPassword">
                         <button type="button" class="btn btn-sm btn-outline-secondary toggle-password"
                             (click)="toggleConfPassword()">
                             <i class="bi" [ngClass]="showConfPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
@@ -43,8 +43,13 @@
                     </div>
                 </div>
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-login text-white">Registrarse</button>
+                    <button type="submit" class="btn btn-login text-white" (click)="register()">Registrarse</button>
                 </div>
+                @if (errorMsg()) {
+                <div class="alert alert-danger mt-2">
+                    {{ errorMsg() }}
+                </div>
+                }
             </form>
 
             <div class="extra-links d-flex justify-content-center">

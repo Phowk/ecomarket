@@ -14,6 +14,12 @@ import { CommonModule } from '@angular/common';
 })
 export class Catalogo implements OnInit {
 
+  // filtros
+  categoriaFiltro: string = 'Todas';
+  productorFiltro: string = 'Todas';
+  precioMaxFiltro: number | null = null;
+
+
   productos: any[] = [];
 
   ngOnInit(): void {
@@ -26,16 +32,16 @@ export class Catalogo implements OnInit {
   constructor(private auth: AuthService, private productosService: ProductosService) {
     console.log('Catalogo component: Constructor called.');
   }
-  cargarProductos() {
-    productos.forEach(producto => {
-      this.productosService.agregarProducto(producto)
-        .then(() => console.log("Producto insertado:", producto.nombre))
-        .catch(err => console.error(err));
+
+
+  get productosFiltrados(): any[] {
+    return this.productos.filter(p => {
+      const cumpleCategoria = this.categoriaFiltro === 'Todas' || p.categoria === this.categoriaFiltro;
+      const cumpleProductor = this.productorFiltro === 'Todas' || p.productor === this.productorFiltro;
+      const cumplePrecio = !this.precioMaxFiltro || p.precio <= this.precioMaxFiltro;
+
+      return cumpleCategoria && cumpleProductor && cumplePrecio;
     });
   }
 
-  // logout() {
-  //   this.auth.signOut();
-  //   window.location.href = '/login';
-  // }
 }
