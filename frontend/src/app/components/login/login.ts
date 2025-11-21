@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { AuthService} from '../../services/auth';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +11,43 @@ import { NgClass } from '@angular/common';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login implements OnInit {
+export class Login {
   email: string = '';
   password: string = '';
   showPassword: boolean = false;
+
+  private auth = inject(AuthService);
+  private router = inject(Router);
+
+
+  loading = signal(false);
+  errorMsg = signal('');
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
-  constructor(private auth: AuthService) {
-  }
-  ngOnInit(): void { }
 
   login() {
-    if (this.email && this.password) {
-      this.auth.signIn(this.email, this.password).then(() => {
-        alert("Inicio de sesión exitoso.");
-        // Redirect to home page
-        window.location.href = '/catalogo';
-      }).catch((error) => {
-        alert("Error en el inicio de sesión: " + error.message);
-        console.log("Error en el inicio de sesión:", error);
-      })
+    if (!this.email || !this.password) {
+      this.errorMsg.set('Por favor completa todos los campos');
+      return;
     }
-  }
 
+    this.loading.set(true);
+    this.errorMsg.set('');
+
+    this.auth.login(this.email, this.password).subscribe({
+      next: () => {
+        this.loading.set(false);
+        window.location.href = '/catalogo';
+        this.router.navigate(['/catalogo']);
+      },
+      error: (error) => {
+        this.loading.set(false);
+        this.errorMsg.set(error.error?.error || 'Credenciales incorrectas');
+      }
+    });
+  }
   
 }

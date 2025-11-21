@@ -1,56 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../../services/auth';
-import { User } from '@angular/fire/auth';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [CommonModule, RouterLink, NgbCollapseModule],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header implements OnInit {
-  public currentUser$: Observable<User | null>;
-  isCollapsed: boolean = false;
 
-  switchCollapse(): void {
-    if (this.isCollapsed) {
-      this.isCollapsed = false;
-    } else {
-      this.isCollapsed = true;
-    }
-  }
-  ngOnInit() {
-     if (typeof window === 'undefined' || !('ResizeObserver' in window)) {
-    return; // prevent SSR / non-browser crashes
-  }
-    const observer = new ResizeObserver(() => {
-      const width = window.innerWidth;
+  isCollapsed = false;
 
-      if (width >= 768) {
-        this.isCollapsed = false; // desktop = expanded
-      } else {
-        this.isCollapsed = true; // mobile = collapsed
-      }
-    });
-
-    observer.observe(document.body);
-  }
+  // Signals para UI reactiva
+  loggedIn = signal(false);
+  userRole = signal<string | null>(null);
 
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {
-    this.currentUser$ = this.authService.currentUser$;
+  ) {}
+
+  ngOnInit() {
+
+    if (typeof window !== 'undefined' && 'ResizeObserver' in window) {
+      const observer = new ResizeObserver(() => {
+        const width = window.innerWidth;
+        this.isCollapsed = width < 768; 
+      });
+
+      observer.observe(document.body);
+    }
+
+    this.refreshAuthState();
   }
 
-  async signOut(): Promise<void> {
-    await this.authService.signOut();
-    // Optionally navigate to home after sign out
-    this.router.navigate(['/home']);
+  switchCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 
+  private refreshAuthState() {
+    this.loggedIn.set(this.authService.isLoggedIn());
+    this.userRole.set(this.authService.getRole());
+  }
+
+  userEmail(): string {
+    // El email viene dentro del token JWT decodificado
+    const token = this.authService.getToken();
+    if (!token) return "";
+    const decoded = this.authService['decodeToken'](token);
+    return decoded?.sub?.email ?? "";
+  }
+
+  logout() {
+    this.authService.logout();
+    this.refreshAuthState();
+    this.router.navigate(['/login']);
+  }
 }

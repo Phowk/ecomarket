@@ -22,19 +22,28 @@
                 @else {
                 }
                 <div class="d-flex align-items-center">
-                    @if (currentUser$ | async; as user) {
-                    <li class="nav-item">
-                        <span class="">Hola, {{ user.displayName || user.email }}</span>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-danger ms-2" (click)="signOut()">Cerrar sesión</button>
-                    </li>
-                    } @else {
-                        <li>
-                    <button class="btn btn-primary" routerLink="/login">Iniciar Sesión</button>
-                    </li>
-                    }
-                </div>
+                    @if (loggedIn()) {
+    <li class="nav-item">
+        <span>Hola, {{ userEmail() }}</span>
+    </li>
+
+    <li class="nav-item">
+        <button class="btn btn-outline-danger ms-2" (click)="logout()">
+            Cerrar sesión
+        </button>
+    </li>
+
+} @else {
+
+    <li class="nav-item">
+        <button class="btn btn-primary" routerLink="/login">
+            Iniciar Sesión
+        </button>
+    </li>
+
+}
+
+                </div> 
             </ul>
         </div>
     </div>

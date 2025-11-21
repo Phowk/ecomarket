@@ -24,7 +24,7 @@ export class ForgotPassword implements OnInit{
     return;
   };
 
-  this.auth.recoverPassword(email);
+  // this.auth.recoverPassword(email);
 }
 
 }

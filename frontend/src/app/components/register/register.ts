@@ -32,22 +32,22 @@ export class Register implements OnInit {
   ngOnInit(): void {
   }
 
-  register() {
-    if(this.email && this.password && this.fullName && this.confirmPassword && (this.password === this.confirmPassword)){
-      this.auth.signUp(this.email, this.password, this.fullName)
-        .then(() => {
-          alert("Registro exitoso. Ahora puedes iniciar sesión.");
-          // Redirect to login page
-          window.location.href = '/login';
-        })
-        .catch((error) => {
-          alert("Error en el registro: " + error.message);
-          console.log("Error en el registro:", error);
-        });
-    } else if(this.password !== this.confirmPassword){
-      alert("Las contraseñas no coinciden.");
-    } else {
-      alert("Por favor, complete todos los campos.");
-    }
-  }
+  // register() {
+  //   if(this.email && this.password && this.fullName && this.confirmPassword && (this.password === this.confirmPassword)){
+  //     this.auth.signUp(this.email, this.password, this.fullName)
+  //       .then(() => {
+  //         alert("Registro exitoso. Ahora puedes iniciar sesión.");
+  //         // Redirect to login page
+  //         window.location.href = '/login';
+  //       })
+  //       .catch((error) => {
+  //         alert("Error en el registro: " + error.message);
+  //         console.log("Error en el registro:", error);
+  //       });
+  //   } else if(this.password !== this.confirmPassword){
+  //     alert("Las contraseñas no coinciden.");
+  //   } else {
+  //     alert("Por favor, complete todos los campos.");
+  //   }
+  // }
 }

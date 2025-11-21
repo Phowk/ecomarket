@@ -34,8 +34,8 @@ export class Catalogo implements OnInit {
     });
   }
 
-  logout() {
-    this.auth.signOut();
-    window.location.href = '/login';
-  }
+  // logout() {
+  //   this.auth.signOut();
+  //   window.location.href = '/login';
+  // }
 }

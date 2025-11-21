@@ -43,4 +43,4 @@ __screenshots__/
 Thumbs.db
 
 # Firebase Admin SDK key
-/backend/ecomarket-9c32a-firebase-adminsdk-fbsvc-4071a3c3bf.json
+/backend/serviceAccountkey.json

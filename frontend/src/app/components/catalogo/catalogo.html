@@ -1,10 +1,10 @@
 <div class="container-fluid py-4">
     <div class="row">
         <div class="d-md-none d-flex justify-content-center mb-3">
-        <button class="btn btn-outline-primary inline-block d-md-none mb-3" data-bs-toggle="collapse"
-            data-bs-target="#mobileFilters">
-            Mostrar filtros
-        </button>
+            <button class="btn btn-outline-primary inline-block d-md-none mb-3" data-bs-toggle="collapse"
+                data-bs-target="#mobileFilters">
+                Mostrar filtros
+            </button>
         </div>
 
         <div id="mobileFilters" class="collapse d-md-none">
@@ -15,9 +15,15 @@
                     <label class="form-label">Categoría</label>
                     <select class="form-select">
                         <option>Todas</option>
+                        <option>Vegetales</option>
                         <option>Frutas</option>
-                        <option>Verduras</option>
+                        <option>Granos</option>
+                        <option>Especias</option>
                         <option>Lácteos</option>
+                        <option>Endulzantes</option>
+                        <option>Bebidas</option>
+                        <option>Panadería</option>
+                        <option>Proteínas</option>
                     </select>
                 </div>
 
@@ -25,9 +31,16 @@
                     <label class="form-label">Ubicación</label>
                     <select class="form-select">
                         <option>Todas</option>
-                        <option>Cundinamarca</option>
-                        <option>Tolima</option>
-                        <option>Eje Cafetero</option>
+                        <option>Finca La Esperanza</option>
+                        <option>Apiarios Don Mario</option>
+                        <option>Granja Santa Rosa</option>
+                        <option>Café El Mirador</option>
+                        <option>Lácteos La Colina</option>
+                        <option>Horno Verde</option>
+                        <option>Finca Los Cedros</option>
+                        <option>Huerta El Sol</option>
+                        <option>Granos del Sur</option>
+                        <option>Finca Los Pinos</option>
                     </select>
                 </div>
 
@@ -39,29 +52,42 @@
                 <button class="btn btn-primary w-100">Aplicar</button>
             </div>
         </div>
-        
+
         <aside class="col-12 col-md-3 col-lg-2 mb-4 position-sticky d-none d-md-block" style="top: 1rem;">
             <div class="p-3 bg-white rounded shadow-sm">
                 <h5 class="mb-3">Filtros</h5>
-        <!-- <button (click)="cargarProductos()">Cargar productos a Firestore</button> -->
+                <!-- <button (click)="cargarProductos()">Cargar productos a Firestore</button> -->
 
                 <div class="mb-3">
                     <label class="form-label">Categoría</label>
                     <select class="form-select">
                         <option>Todas</option>
+                        <option>Vegetales</option>
                         <option>Frutas</option>
-                        <option>Verduras</option>
+                        <option>Granos</option>
+                        <option>Especias</option>
                         <option>Lácteos</option>
+                        <option>Endulzantes</option>
+                        <option>Bebidas</option>
+                        <option>Panadería</option>
+                        <option>Proteínas</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Ubicación</label>
+                    <label class="form-label">Productor</label>
                     <select class="form-select">
                         <option>Todas</option>
-                        <option>Cundinamarca</option>
-                        <option>Tolima</option>
-                        <option>Eje Cafetero</option>
+                        <option>Finca La Esperanza</option>
+                        <option>Apiarios Don Mario</option>
+                        <option>Granja Santa Rosa</option>
+                        <option>Café El Mirador</option>
+                        <option>Lácteos La Colina</option>
+                        <option>Horno Verde</option>
+                        <option>Finca Los Cedros</option>
+                        <option>Huerta El Sol</option>
+                        <option>Granos del Sur</option>
+                        <option>Finca Los Pinos</option>
                     </select>
                 </div>
 
@@ -73,7 +99,7 @@
                 <button class="btn btn-primary w-100">Aplicar</button>
             </div>
         </aside>
-        
+
         <!-- Productos -->
         <main class="col-12 col-md-9 col-lg-10">
             <h3 class="text-center">Catálogo</h3>
@@ -95,32 +121,41 @@
             </div> -->
 
             <div class="row g-4">
-  @for (producto of productos; track producto.id) {
-    <div class="col-6 col-lg-4 col-xl-3">
-      <div class="card h-100 shadow-sm">
 
-        <img 
-          [src]="producto.imagenUrl || 'assets/no-image.png'"
-          class="card-img-top"
-          [alt]="producto.nombre"
-        >
+                <!-- Tarjetas generadas dinámicamente -->
+                @for (producto of productos; track producto.id) {
+                <div class="col-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 shadow-sm">
 
-        <div class="card-body">
-          <h6 class="card-title">{{ producto.nombre }}</h6>
+                        <img [src]="producto.imagenUrl || 'assets/no-image.png'" class="card-img-top"
+                            [alt]="producto.nombre">
 
-          <p class="card-text text-muted">
-            {{ producto.precio | currency:'COP':'symbol-narrow' }}
-          </p>
+                        <div class="card-body">
+                            <h6 class="card-title fs-3">{{ producto.nombre }}</h6>
+                            <span class="fs-6 text-dark">{{ producto.descripcion }}</span>
+                            <br>
+                            <br>
+                            <span class="fw-semibold">Productor: </span>
+                            <span class="opacity-50">{{ producto.productor}}</span>
+                            <div class="d-flex justify-content-center my-3">
+                                <p class="card-text fw-bold fs-4 text-success">
+                                    {{ producto.precio | currency:'COP':'symbol-narrow' }}/kg
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-center mb-3">
 
-          <button class="btn btn-outline-primary btn-sm w-100">
-            Ver más
-          </button>
-        </div>
+                                <button class="btn btn-success btn-sm w-100 fs-4 fw-bolder">
+                                    <i class="bi bi-cart me-2"></i>Agregar
+                                </button>
+                            </div>
 
-      </div>
-    </div>
-  }
-</div>
+                        </div>
+
+                    </div>
+                </div>
+                }
+
+            </div>
         </main>
 
     </div>

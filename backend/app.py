@@ -1,35 +1,25 @@
-from flask import Flask, request, jsonify
-import firebase_admin
-from firebase_admin import credentials, auth, firestore
+from flask import Flask
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager
+from blueprints.auth import auth_bp
+from blueprints.productos import productos_bp
+from config.firebase import db
 
 # Inicializar Flask
 app = Flask(__name__)
+CORS(app)
 
-# Inicializar Firebase Admin
-cred = credentials.Certificate("ecomarket-9c32a-firebase-adminsdk-fbsvc-4071a3c3bf.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+# JWT
+app.config["JWT_SECRET_KEY"] = "clave_super_secreta_escuela"
+jwt = JWTManager(app)
 
-# Ruta de prueba
-@app.route("/api/protected", methods=["GET"])
-def protected():
-    id_token = request.headers.get("Authorization")
-    if not id_token:
-        return jsonify({"error": "No token provided"}), 401
-    try:
-        decoded_token = auth.verify_id_token(id_token)
-        uid = decoded_token["uid"]
-        return jsonify({"message": f"Hola usuario {uid}"})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 401
+# Registrar blueprints
+app.register_blueprint(auth_bp)
+app.register_blueprint(productos_bp, url_prefix="/api/productos")
 
-# Ruta para obtener productos
-@app.route("/api/productos", methods=["GET"])
-def get_productos():
-    productos_ref = db.collection("productos")
-    docs = productos_ref.stream()
-    productos = [doc.to_dict() for doc in docs]
-    return jsonify(productos)
+@app.route("/")
+def index():
+    return "Backend Flask funcionando"
 
 if __name__ == "__main__":
     app.run(debug=True)
